@@ -18,4 +18,4 @@ class Student(models.Model):
     
 
     def __str__(self):
-        return self.name
+        return f"Name: {self.name}, Email: {self.email}"
