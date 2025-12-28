@@ -8,11 +8,12 @@ class Student(models.Model):
     email       = models.EmailField(unique=True, verbose_name="Student Email")
     website     = models.URLField(null=True, blank=True, verbose_name="Portfolio Website")
     description = models.TextField(verbose_name="Description")
+    gender      = models.CharField(max_length=6, choices=(('male', 'Male'), ('female', 'Female')), verbose_name="Gender")
     
     ##? Numerical and Logical Fields ----------------------------------------------------
     roll          = models.IntegerField(verbose_name="Roll Number")
     age           = models.PositiveBigIntegerField(verbose_name="Age")
-    edu_cost      = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Education Cost (per year)")
+    edu_cost      = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Education Cost (per year)")
     semester_cost = models.FloatField(verbose_name="Semester Cost (per month)")
     is_married    = models.BooleanField(default=False, verbose_name="Marital Status")
     
@@ -28,3 +29,8 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name = "Student"
+        verbose_name_plural = "Students"
+        # db_table = "student"
